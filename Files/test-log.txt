@@ -1,0 +1,55 @@
+Average grade per passing student: 55.50
+----------------------------------
+
+Student number: 1 and Name: Alice
+Average score: 55.50
+Highest grade: Score with 55.50
+Student number: 2 and Name: Bob
+Average score: 45.00
+Highest grade: Score with 45.00
+----------------------------------
+
+Student number: 1 and Name: Alice
+Average score: 45.50
+Highest grade: Score with 45.50
+----------------------------------
+
+Number of students with scholarship: 0
+----------------------------------
+
+File has 3 lines
+File has 2 students
+----------------------------------
+
+Average grade per class: 50.25
+----------------------------------
+
+Number of students that failed: 1
+----------------------------------
+
+Student number: 1 and Name: Alice
+Average score: 55.50
+Highest grade: Score with 55.50
+----------------------------------
+
+Number of students that failed: 1
+----------------------------------
+
+Average grade per class: 50.25
+----------------------------------
+
+Data is null
+----------------------------------
+
+Number of students with scholarship: 0
+----------------------------------
+
+Number of students that passed: 1
+----------------------------------
+
+Highest grade: Score with 55.50
+----------------------------------
+
+Number of students that passed: 1
+----------------------------------
+
