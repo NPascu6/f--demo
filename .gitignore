@@ -1,4 +1,3 @@
 bin/
 obj/
-Files/log.txt
-Files/test-log.txt
+*.txt
