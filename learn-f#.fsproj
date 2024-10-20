@@ -12,12 +12,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Logger.fs" />
-    <Compile Include="Helpers.fs" />
+    <Compile Include="common/Logger.fs" />
+    <Compile Include="common/Helpers.fs" />
+    
     <Compile Include="Student.fs" />
 
-    <Compile Include="LoggerTests.fs" />
-    <Compile Include="StudentTests.fs" />
+    <Compile Include="_tests_/LoggerTests.fs" />
+    <Compile Include="_tests_/StudentTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

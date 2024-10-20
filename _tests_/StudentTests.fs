@@ -206,10 +206,25 @@ let ``fromString should correctly identify highest and lowest grades`` () =
     Assert.Equal("Science", student.LowestGrade.Name)
 
 [<Fact>]
-let ``formString should throw format error when file contents do not have float point or are negative or weird math``() =
+let ``formString should throw format error when file contents do not have float point or are negative or weird math``
+    ()
+    =
     // Arrange
     let header = [| "Name"; "ID"; "Math"; "English"; "Science" |]
     let row = "John Doe\t123\t95.0.0\t-92.00\t88.0000"
 
     // Act & Assert
     Assert.Throws<FormatException>(fun () -> fromString (row, header) |> ignore)
+
+[<Fact>]
+let ``fail print with invalid method`` () =
+    // Arrange
+    let student =
+        { Name = "John Doe"
+          Id = "123"
+          AverageGrade = 87.6
+          HighestGrade = { Value = 90.0; Name = "Math" }
+          LowestGrade = { Value = 85.0; Name = "English" } }
+
+    // Act & Assert
+    Assert.Throws<ArgumentException>(fun () -> print student "invalid" |> ignore)
