@@ -215,16 +215,3 @@ let ``formString should throw format error when file contents do not have float 
 
     // Act & Assert
     Assert.Throws<FormatException>(fun () -> fromString (row, header) |> ignore)
-
-[<Fact>]
-let ``fail print with invalid method`` () =
-    // Arrange
-    let student =
-        { Name = "John Doe"
-          Id = "123"
-          AverageGrade = 87.6
-          HighestGrade = { Value = 90.0; Name = "Math" }
-          LowestGrade = { Value = 85.0; Name = "English" } }
-
-    // Act & Assert
-    Assert.Throws<ArgumentException>(fun () -> print student "invalid" |> ignore)

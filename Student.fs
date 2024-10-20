@@ -39,7 +39,7 @@ let fromString (row: string, head: string[]) =
                 { Value = lowestGrade
                   Name = head.[indexOfLowestGrade] } }
         with :? FormatException as ex ->
-            raise (new FormatException("Invalid row format. Please check the data."))
+            raise (new FormatException($"Invalid row format. Please check the data. Details: {ex.Message}"))
     with :? FormatException as ex ->
         raise (new FormatException($"Invalid row format. Please check the data. Details:{ex.Message}"))
 
@@ -77,7 +77,7 @@ let summarize filePath =
             if data.Length > 0 then
                 // Read all lines from the file
                 let rows = data |> Array.skip 1
-                let head = rows |> Array.head |> (fun x -> x.Split('\t'))
+                let head = data |> Array.head |> (fun x -> x.Split('\t'))
 
                 rows
                 |> Array.map (fun row -> fromString (row, head))

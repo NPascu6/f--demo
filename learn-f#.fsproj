@@ -7,10 +7,6 @@
     <GenerateProgramFile>false</GenerateProgramFile> <!-- To suppress the automatic generation of Program.fs -->
   </PropertyGroup>
 
-  <PropertyGroup>
-    <StartArguments>$(MSBuildThisFileDirectory)\Files\StudentScores.txt</StartArguments>
-  </PropertyGroup>
-
   <ItemGroup>
     <Compile Include="common/Logger.fs" />
     <Compile Include="common/Helpers.fs" />

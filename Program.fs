@@ -1,7 +1,13 @@
 ﻿module Program
 
+open System.IO
+open System
+
 [<EntryPoint>]
 let main argv =
-    Student.summarize argv.[0]
+    let studentFilePath =
+        Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Files\\StudentScores.txt")
+
+    Student.summarize studentFilePath
 
     0
