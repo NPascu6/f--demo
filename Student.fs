@@ -24,7 +24,9 @@ let fromString (row: string, head: string[]) =
 
         //get the index of the highest and lowest grade if format is wrong raise exception
         try
-            let indexOfHighestGrade = columns |> Array.findIndex (fun x -> x = highestGradeString)
+            let indexOfHighestGrade =
+                columns |> Array.findIndex (fun x -> x = highestGradeString)
+
             let indexOfLowestGrade = columns |> Array.findIndex (fun x -> x = lowestGradeString)
 
             { Name = columns.[0]
@@ -39,7 +41,7 @@ let fromString (row: string, head: string[]) =
         with :? FormatException as ex ->
             raise (new FormatException("Invalid row format. Please check the data."))
     with :? FormatException as ex ->
-        raise (new FormatException("Invalid row format. Please check the data."))
+        raise (new FormatException($"Invalid row format. Please check the data. Details:{ex.Message}"))
 
 let logSummary student (logger: ILogger) =
     logger.Log($"Student: {student.Name}")
@@ -66,12 +68,11 @@ let print student method =
 
 let summarize filePath =
     let logger = FileLogger() :> ILogger
-    let data = File.ReadAllLines(filePath)
 
     try
         if File.Exists filePath then
             logger.Log $"Reading file from: {filePath}"
-
+            let data = File.ReadAllLines(filePath)
 
             if data.Length > 0 then
                 // Read all lines from the file

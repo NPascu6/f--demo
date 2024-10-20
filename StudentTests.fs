@@ -19,7 +19,7 @@ let createTestFile (content: string) =
 let ``Parsing a valid student row should work correctly`` () =
     // Arrange
     let header = [| "Name"; "ID"; "Math"; "English"; "Science" |]
-    let row = "John Doe\t123\t85.0\t90.0\t88.0"
+    let row = "John Doe\t123\t85.00\t90.00\t88.00"
 
     // Act
     let student = fromString (row, header)
@@ -70,7 +70,7 @@ let ``LogSummary should log student details correctly`` () =
 let ``Summarize should process valid file correctly`` () =
     // Arrange
     let fileContent =
-        "Name\tID\tMath\tEnglish\tScience\nJohn Doe\t123\t85.0\t90.0\t88.0\nJane Doe\t124\t78.0\t92.0\t80.0"
+        "Name\tID\tMath\tEnglish\tScience\nJohn Doe\t123\t85.00\t90.00\t88.00\nJane Doe\t124\t78.00\t92.00\t80.00"
 
     let filePath = createTestFile (fileContent)
 
@@ -125,7 +125,7 @@ let ``Summarize should log an error for an empty file`` () =
 let ``Summarize should handle invalid data gracefully`` () =
     // Arrange
     let invalidContent =
-        "Name\tID\tMath\tEnglish\tScience\nInvalid Student\t125\tbaddata\t92.0\t80.0"
+        "Name\tID\tMath\tEnglish\tScience\nInvalid Student\t125\tbaddata\t92.00\t80.00"
 
     let invalidFilePath = createTestFile (invalidContent)
 
