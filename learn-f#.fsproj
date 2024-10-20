@@ -1,23 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <IsTestProject>true</IsTestProject>
-    <GenerateProgramFile>false</GenerateProgramFile> <!-- To suppress the automatic generation of Program.fs -->
+    <GenerateProgramFile>false</GenerateProgramFile>
+    <!-- To suppress the automatic generation of Program.fs -->
   </PropertyGroup>
-
   <ItemGroup>
+    <Compile Include="models/Student.fs" />
     <Compile Include="common/Logger.fs" />
     <Compile Include="common/Helpers.fs" />
-    
     <Compile Include="Student.fs" />
-
     <Compile Include="_tests_/LoggerTests.fs" />
     <Compile Include="_tests_/StudentTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="xunit" Version="2.4.2" />

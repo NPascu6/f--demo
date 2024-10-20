@@ -1,0 +1,15 @@
+2024-10-20T18:40:05 ERROR: No command line arguments provided. Please provide 'console' or 'logger'.
+2024-10-20T18:40:14 : Command line arguments: System.String[]
+2024-10-20T18:40:14 : Printing to console.
+2024-10-20T18:40:14 : Reading file from: G:\dev\f#-udemy\learn-f#\bin\Debug\net8.0\..\..\..\Files\StudentScores.txt
+2024-10-20T18:40:14 : All actions completed successfully.
+2024-10-20T18:43:30 : Command line arguments: System.String[]
+2024-10-20T18:43:30 : Printing to console.
+2024-10-20T18:43:30 : Reading file from: G:\dev\f#-udemy\learn-f#\bin\Debug\net8.0\..\..\..\Files\StudentScores.txt
+2024-10-20T18:43:30 : All actions completed successfully.
+2024-10-20T18:43:30 : Log file path: G:\dev\f#-udemy\learn-f#\bin\Debug\net8.0\..\..\..\Files\log.txt
+2024-10-20T18:46:22 : Command line arguments: System.String[]
+2024-10-20T18:46:22 : Printing to console.
+2024-10-20T18:46:22 : Reading file from: G:\dev\f#-udemy\learn-f#\bin\Debug\net8.0\..\..\..\Files\StudentScores.txt
+2024-10-20T18:46:23 : All actions completed successfully.
+2024-10-20T18:46:23 : Log file path: G:/dev/f#-udemy/learn-f#/bin/Debug/net8.0/../../../Files/log.txt

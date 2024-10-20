@@ -5,6 +5,7 @@ open System.IO
 open Xunit
 open Logger
 open Student
+open StudentModel
 
 let getTempLogFile () =
     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Files\\log.txt")
@@ -75,7 +76,7 @@ let ``Summarize should process valid file correctly`` () =
     let filePath = createTestFile (fileContent)
 
     // Act
-    summarize filePath
+    summarize filePath [| "logger" |]
 
     // Assert
     let logFile = getTempLogFile ()
@@ -93,7 +94,7 @@ let ``Summarize should log an error for a missing file`` () =
     let missingFilePath = Path.Combine(Path.GetTempPath(), "non-existent-file.txt")
 
     // Act
-    summarize missingFilePath
+    summarize missingFilePath [| "logger" |]
 
     // Assert
     let logFile = getTempLogFile ()
@@ -110,7 +111,7 @@ let ``Summarize should log an error for an empty file`` () =
     let emptyFile = createTestFile ("")
 
     // Act
-    summarize emptyFile
+    summarize emptyFile [| "logger" |]
 
     // Assert
     let logFile = getTempLogFile ()
@@ -130,7 +131,7 @@ let ``Summarize should handle invalid data gracefully`` () =
     let invalidFilePath = createTestFile (invalidContent)
 
     // Act
-    summarize invalidFilePath
+    summarize invalidFilePath [| "logger" |]
 
     // Assert
     let logFile = getTempLogFile ()

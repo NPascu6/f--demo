@@ -3,15 +3,7 @@ module Student
 open Logger
 open System.IO
 open System
-
-type Grade = { Value: float; Name: string }
-
-type Student =
-    { Name: string
-      Id: string
-      AverageGrade: float
-      HighestGrade: Grade
-      LowestGrade: Grade }
+open StudentModel
 
 let fromString (row: string, head: string[]) =
     try
@@ -66,8 +58,26 @@ let print student method =
     | _ -> failwith "Invalid method. Please use 'logger' or 'console'."
 
 
-let summarize filePath =
+let summarize filePath (commandArg: string[]) =
     let logger = FileLogger() :> ILogger
+    //let the value of commandArg be "logger" if it is empty
+    let mutable commandArgVar = commandArg
+
+    if
+        (commandArg.Length > 0
+         && (commandArg = [| "logger" |] || commandArg = [| "console" |]))
+    then
+        logger.Log($"Command line arguments: {commandArg}")
+
+        if (commandArg.[0] = "console") then
+            logger.Log("Printing to console.")
+        else if (commandArg.[0] = "logger") then
+            logger.Log("Printing to logger.")
+        else
+            logger.LogError("Invalid command line argument. Please use 'console' or 'logger'.")
+    else
+        logger.LogError("No command line arguments provided. Please provide 'console' or 'logger'.")
+
 
     try
         if File.Exists filePath then
@@ -78,13 +88,15 @@ let summarize filePath =
                 // Read all lines from the file
                 let rows = data |> Array.skip 1
                 let head = data |> Array.head |> (fun x -> x.Split('\t'))
+                let printMethod = commandArg.[0]
 
                 rows
                 |> Array.map (fun row -> fromString (row, head))
                 |> Array.sortByDescending (fun student -> student.AverageGrade)
-                |> Array.iter (fun student -> print student "logger")
+                |> Array.iter (fun student -> print student commandArgVar[0])
 
                 logger.Log "All actions completed successfully."
+                logger.Log $"Log file path: {Helpers.formatPathToRemoveSlash logger.defaultPath}"
             else
                 logger.Log "The file is empty. No data to process."
 

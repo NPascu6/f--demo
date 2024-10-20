@@ -5,6 +5,7 @@ open System.IO
 
 // Define ILogger interface with different log levels
 type ILogger =
+    abstract member defaultPath: string
     abstract member Log: string -> unit
     abstract member LogError: string -> unit
     abstract member LogWarning: string -> unit
@@ -59,11 +60,14 @@ type FileLogger(?logPath) =
 
     // Implement ILogger methods using the common logMessage function
     interface ILogger with
+        member this.defaultPath = defaultPath
+
         member this.Log(msg: string) =
             logMessage "" msg (int LogLengthPerType.Log)
 
         member this.LogError(msg: string) =
             logMessage "ERROR" msg (int LogLengthPerType.LogError)
+            System.Environment.Exit(1)
 
         member this.LogWarning(msg: string) =
             logMessage "WARNING" msg (int LogLengthPerType.LogWarning)
